@@ -1,0 +1,11 @@
+{
+  "name": "perf.js",
+  "description": "Performance optimization experiments for JS.",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "dependencies": {
+    "benchmark": "2.1.4"
+  },
+  "private": "true"
+}
