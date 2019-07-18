@@ -6,11 +6,20 @@ const Benchmark = require('benchmark');
 
 // Utility fns for simulating work.
 const doSomeWork = () => Math.floor(Math.random() * 666 + 1);
-const inc = (x) => x + 1;
-const sampleCallback = inc;
 
-// The typical approach to dealing with nullable callbacks is to
-// perform a null check right before applying the callback.
+// A typical client callback that updates some state based on the received
+// value.
+const state = { even: 0, odd: 0 };
+function sampleCallback(x) {
+  if (x % 2 == 0) {
+    state.even++;
+  } else {
+    state.odd++;
+  }
+}
+
+// The typical approach to dealing with nullable callbacks is to perform a null
+// check right before applying the callback.
 function typical(cb) {
   const result = doSomeWork();
   if (cb) {
